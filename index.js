@@ -20,7 +20,7 @@ Adinda.on("message", async (msg) => {
     msg.reply("Waalaikumsalam");
   }
   if (msg.body == "!testbuton") {
-    let button = new Buttons('Button Name', [{ body: 'bt1 }, { body: 'bt2' }, { body: 'bt3' }], 'title', 'footer');
+    let button = new Buttons('Button Name', [{ body: 'bt1' }, { body: 'bt2' }, { body: 'bt3' }], 'title', 'footer');
     Adinda.sendMessage(msg.from, button);
   }
   if (msg.body == "bt1") {
