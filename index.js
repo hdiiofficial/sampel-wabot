@@ -1,10 +1,11 @@
+import Natasya from 'whatsapp-web.js'
 import qrcode from 'qrcode-terminal';
-import { Client, Buttons, LocalAuth } from 'whatsapp-web.js';
+const { Client, Buttons, LocalAuth } = Natasya;
 
 const Adinda = new Client({
   authStrategy: new LocalAuth({
     dataPath: 'session',
-    clientUd: 'new session'
+    clientId: 'new session'
   }),
   playwright: {
     headless: false,
