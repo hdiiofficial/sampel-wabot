@@ -1,10 +1,17 @@
-import HADIDEV from 'whatsapp-web.js';
 import qrcode from 'qrcode-terminal';
-
-const { Client, Buttons, LocalAuth } = HADIDEV;
+import { Client, Buttons, LocalAuth } from 'whatsapp-web.js';
 
 const Adinda = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth({
+    dataPath: 'session',
+    clientUd: 'new session'
+  }),
+  playwright: {
+    headless: false,
+    args: ['--no-sandbox']
+  },
+  markOnlineAvailable: false,
+  qrMaxRetries: 3
 });
 
 Adinda.on("qr", (qr) => {
