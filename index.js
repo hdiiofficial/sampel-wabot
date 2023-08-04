@@ -46,6 +46,14 @@ client.on('message', async (mseg) => {
 
     await chat.sendMessage(text, { mentions })
   }
+  if(mseg.body === "!hidetag") {
+    const chat = await mseg.getChat()
+    let text = " "
+    let _participants = chat.participants.map(v => v.id._serialized)
+        let mentions = []
+        for (let jid of _participants) mentions.push(await client.getChatById(jid))
+    client.sendMessage(mseg.from, text, { mentions })
+  }
 })
   
 
