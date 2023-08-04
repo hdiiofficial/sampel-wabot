@@ -34,16 +34,17 @@ client.on('message', async (mseg) => {
   if(mseg.body === '!tagall') {
     const chat = await mseg.getChat()
 
-    let teks = mseg.body.split(' ').slice(0, 1).join(' ')
+    let text = " "
     let mentions = []
 
-    for(let participant of chat.participant) {
-      const contact = await client.getContactById(participant.id._serialized)
-
-      mentions.push(contact)
+    for(var participant of chat.participants) {
+        const contact = await client.getContactById(participant.id._serialized);
+        
+        mentions.push(contact)
+        text += `@${participant.id.user}\n`
     }
 
-    await chat.sendMessage(teks, { mentions })
+    await chat.sendMessage(text, { mentions })
   }
 })
   
